@@ -1,0 +1,116 @@
+{
+  "name": "stocktalkerai-cli",
+  "description": "StockTalker AI backend for alerts, indicators, and market data.",
+  "version": "0.1.0",
+  "tools": [
+    {
+      "name": "status",
+      "description": "Ping the StockTalker API to check health status.",
+      "command": ["stocktalkerai", "status", "-o", "json"]
+    },
+    {
+      "name": "price",
+      "description": "Get current price or 30-day historical data for a stock ticker.",
+      "command": ["stocktalkerai", "price"],
+      "arguments": [
+        {
+          "name": "ticker",
+          "description": "The stock ticker symbol (e.g. AAPL, BTC-USD)",
+          "required": true,
+          "positional": true
+        },
+        {
+          "name": "--history",
+          "description": "Fetch 30-day historical data instead of just current price",
+          "type": "boolean"
+        },
+        {
+          "name": "-o",
+          "description": "Always pass json",
+          "required": true,
+          "default": "json"
+        }
+      ]
+    },
+    {
+      "name": "indicators",
+      "description": "Calculate Technical Indicators like SMA20 and RSI14 for a given ticker.",
+      "command": ["stocktalkerai", "indicators"],
+      "arguments": [
+        {
+          "name": "ticker",
+          "description": "The stock ticker symbol",
+          "required": true,
+          "positional": true
+        },
+        {
+          "name": "-o",
+          "description": "Always pass json",
+          "required": true,
+          "default": "json"
+        }
+      ]
+    },
+    {
+      "name": "account",
+      "description": "Get account details and active alert quotas. Requires STOCKTALKERAI_API_KEY environment variable.",
+      "command": ["stocktalkerai", "account", "-o", "json"]
+    },
+    {
+      "name": "alert_list",
+      "description": "List all active or triggered alerts. Requires STOCKTALKERAI_API_KEY.",
+      "command": ["stocktalkerai", "alert", "list"],
+      "arguments": [
+        {
+          "name": "--status",
+          "description": "Filter by status (e.g. active, triggered)",
+          "type": "string"
+        },
+        {
+          "name": "-o",
+          "description": "Always pass json",
+          "required": true,
+          "default": "json"
+        }
+      ]
+    },
+    {
+      "name": "alert_create",
+      "description": "Create a new price alert using natural language prompts (e.g., 'AAPL drops 5%'). Requires STOCKTALKERAI_API_KEY.",
+      "command": ["stocktalkerai", "alert", "create"],
+      "arguments": [
+        {
+          "name": "prompt",
+          "description": "The natural language instruction",
+          "required": true,
+          "positional": true
+        },
+        {
+          "name": "-o",
+          "description": "Always pass json",
+          "required": true,
+          "default": "json"
+        }
+      ]
+    },
+    {
+      "name": "alert_delete",
+      "description": "Delete a stock alert by its ID. Requires STOCKTALKERAI_API_KEY.",
+      "command": ["stocktalkerai", "alert", "delete"],
+      "arguments": [
+        {
+          "name": "id",
+          "description": "The alert's ID string",
+          "required": true,
+          "positional": true
+        },
+        {
+          "name": "-o",
+          "description": "Always pass json",
+          "required": true,
+          "default": "json"
+        }
+      ]
+    }
+  ]
+}
