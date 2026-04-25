@@ -2,7 +2,7 @@ mod cli;
 mod client;
 
 use clap::Parser;
-use cli::{Cli, Commands, AlertCommand};
+use cli::{Cli, Commands, AlertCommand, ListCommand};
 use client::Client;
 
 #[tokio::main]
@@ -54,6 +54,11 @@ async fn main() -> anyhow::Result<()> {
             }
             AlertCommand::Archive { id } => {
                 client.delete(&format!("/alerts/{}", id)).await?
+            }
+        }
+        Commands::List { action } => match action {
+            ListCommand::Ls => {
+                client.get("/lists").await?
             }
         }
     };

@@ -37,6 +37,17 @@ pub enum Commands {
         #[command(subcommand)]
         action: AlertCommand,
     },
+    /// Manage lists
+    List {
+        #[command(subcommand)]
+        action: ListCommand,
+    },
+}
+
+#[derive(Subcommand)]
+pub enum ListCommand {
+    /// Retrieve all alert lists
+    Ls,
 }
 
 #[derive(Subcommand)]

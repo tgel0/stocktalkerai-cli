@@ -116,6 +116,11 @@
           "default": "json"
         }
       ]
+    },
+    {
+      "name": "list_ls",
+      "description": "Retrieve all alert lists associated with the user. Requires STOCKTALKERAI_API_KEY.",
+      "command": ["stocktalkerai", "list", "ls"]
     }
   ]
 }
