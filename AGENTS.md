@@ -38,8 +38,9 @@ Your compiled binary will be located at `./target/release/stocktalkerai`.
 
 ### Authenticated Routes (Requires STOCKTALKERAI_API_KEY)
 * **Account**: `stocktalkerai account -o json` -> Returns your user tier and active alert count.
-* **Alert List**: `stocktalkerai alert list -o json` -> List all alerts.
-* **Alert Create**: `stocktalkerai alert create "Notify me when AAPL crosses $200" -o json` -> Generates an alert from natural language.
-* **Alert Delete**: `stocktalkerai alert delete <id> -o json` -> Disables an alert.
+* **Alert Ls**: `stocktalkerai alert ls [--list <id>] -o json` -> List all alerts, optionally filtered by a list ID.
+* **Alert Create**: `stocktalkerai alert create "Notify me when AAPL crosses $200" [--list <id>] [--note <"text">] [--full] -o json` -> Generates an alert, optionally attaching it to a list or adding a note.
+* **Alert Archive**: `stocktalkerai alert archive <id> -o json` -> Safely archives (disables) an alert.
+* **List Ls**: `stocktalkerai list ls -o json` -> Retrieves all alert list groups assigned to the user.
 
 See `agents/tool-catalog.json` for exact JSON schemas mapping each command for OpenClaw.
