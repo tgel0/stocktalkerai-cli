@@ -59,7 +59,7 @@ pub enum AlertCommand {
         full: bool,
     },
     /// Archive an alert
-    Delete {
+    Archive {
         id: String,
     },
 }

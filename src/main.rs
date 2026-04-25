@@ -52,7 +52,7 @@ async fn main() -> anyhow::Result<()> {
                 };
                 client.post(path, &body).await?
             }
-            AlertCommand::Delete { id } => {
+            AlertCommand::Archive { id } => {
                 client.delete(&format!("/alerts/{}", id)).await?
             }
         }
