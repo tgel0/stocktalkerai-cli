@@ -57,6 +57,9 @@ pub enum AlertCommand {
         /// Filter by status (e.g. active, triggered)
         #[arg(long)]
         status: Option<String>,
+        /// Filter by list ID
+        #[arg(long)]
+        list: Option<String>,
     },
     /// Get details of a specific alert
     Get {

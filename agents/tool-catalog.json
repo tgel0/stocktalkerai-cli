@@ -62,6 +62,11 @@
       "command": ["stocktalkerai", "alert", "ls"],
       "arguments": [
         {
+          "name": "--list",
+          "description": "Filter alerts by list ID",
+          "type": "string"
+        },
+        {
           "name": "--status",
           "description": "Filter by status (e.g. active, triggered)",
           "type": "string"

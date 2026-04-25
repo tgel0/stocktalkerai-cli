@@ -33,10 +33,19 @@ async fn main() -> anyhow::Result<()> {
             client.get("/account").await?
         }
         Commands::Alert { action } => match action {
-            AlertCommand::Ls { status } => {
-                let path = match status {
-                    Some(s) => format!("/alerts?status={}", s),
-                    None => "/alerts".to_string()
+            AlertCommand::Ls { status, list } => {
+                let mut params = Vec::new();
+                if let Some(s) = status {
+                    params.push(format!("status={}", s));
+                }
+                if let Some(l) = list {
+                    params.push(format!("listId={}", l));
+                }
+                
+                let path = if params.is_empty() {
+                    "/alerts".to_string()
+                } else {
+                    format!("/alerts?{}", params.join("&"))
                 };
                 client.get(&path).await?
             }
