@@ -43,9 +43,14 @@ async fn main() -> anyhow::Result<()> {
             AlertCommand::Get { id } => {
                 client.get(&format!("/alerts/{}", id)).await?
             }
-            AlertCommand::Create { prompt } => {
+            AlertCommand::Create { prompt, full } => {
                 let body = serde_json::json!({ "prompt": prompt });
-                client.post("/alerts", &body).await?
+                let path = if *full {
+                    "/alerts?full=true"
+                } else {
+                    "/alerts"
+                };
+                client.post(path, &body).await?
             }
             AlertCommand::Delete { id } => {
                 client.delete(&format!("/alerts/{}", id)).await?

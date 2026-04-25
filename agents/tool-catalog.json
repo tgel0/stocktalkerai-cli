@@ -86,6 +86,11 @@
           "positional": true
         },
         {
+          "name": "--full",
+          "description": "Return the complete nested alert object data instead of the condensed summary",
+          "type": "boolean"
+        },
+        {
           "name": "-o",
           "description": "Always pass json",
           "required": true,
