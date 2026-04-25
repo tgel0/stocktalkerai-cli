@@ -42,7 +42,7 @@ pub enum Commands {
 #[derive(Subcommand)]
 pub enum AlertCommand {
     /// List all your alerts
-    List {
+    Ls {
         /// Filter by status (e.g. active, triggered)
         #[arg(long)]
         status: Option<String>,

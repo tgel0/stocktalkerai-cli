@@ -57,9 +57,9 @@
       "command": ["stocktalkerai", "account", "-o", "json"]
     },
     {
-      "name": "alert_list",
+      "name": "alert_ls",
       "description": "List all active or triggered alerts. Requires STOCKTALKERAI_API_KEY.",
-      "command": ["stocktalkerai", "alert", "list"],
+      "command": ["stocktalkerai", "alert", "ls"],
       "arguments": [
         {
           "name": "--status",

@@ -33,7 +33,7 @@ async fn main() -> anyhow::Result<()> {
             client.get("/account").await?
         }
         Commands::Alert { action } => match action {
-            AlertCommand::List { status } => {
+            AlertCommand::Ls { status } => {
                 let path = match status {
                     Some(s) => format!("/alerts?status={}", s),
                     None => "/alerts".to_string()
