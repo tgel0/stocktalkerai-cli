@@ -68,6 +68,12 @@ pub enum AlertCommand {
     /// Create a new alert using natural language
     Create {
         prompt: String,
+        /// Optional ID of the list to attach this alert to
+        #[arg(long)]
+        list: Option<String>,
+        /// Optional note to attach to this alert
+        #[arg(long)]
+        note: Option<String>,
         /// Return the full underlying nested alert object
         #[arg(long)]
         full: bool,

@@ -91,6 +91,16 @@
           "positional": true
         },
         {
+          "name": "--list",
+          "description": "Optional list ID to attach this alert to.",
+          "type": "string"
+        },
+        {
+          "name": "--note",
+          "description": "Optional note to attach to the alert.",
+          "type": "string"
+        },
+        {
           "name": "--full",
           "description": "Return the complete nested alert object data instead of the condensed summary",
           "type": "boolean"

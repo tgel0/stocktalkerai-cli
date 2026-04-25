@@ -52,8 +52,18 @@ async fn main() -> anyhow::Result<()> {
             AlertCommand::Get { id } => {
                 client.get(&format!("/alerts/{}", id)).await?
             }
-            AlertCommand::Create { prompt, full } => {
-                let body = serde_json::json!({ "prompt": prompt });
+            AlertCommand::Create { prompt, list, note, full } => {
+                let mut body = serde_json::json!({ "prompt": prompt });
+                
+                if let Some(obj) = body.as_object_mut() {
+                    if let Some(l) = list {
+                        obj.insert("listId".to_string(), serde_json::json!(l));
+                    }
+                    if let Some(n) = note {
+                        obj.insert("note".to_string(), serde_json::json!(n));
+                    }
+                }
+
                 let path = if *full {
                     "/alerts?full=true"
                 } else {
