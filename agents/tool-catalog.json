@@ -100,7 +100,7 @@
     },
     {
       "name": "alert_delete",
-      "description": "Delete a stock alert by its ID. Requires STOCKTALKERAI_API_KEY.",
+      "description": "Archive a stock alert by its ID (disables it safely without a hard delete). Requires STOCKTALKERAI_API_KEY.",
       "command": ["stocktalkerai", "alert", "delete"],
       "arguments": [
         {

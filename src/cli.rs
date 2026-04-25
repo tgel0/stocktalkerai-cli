@@ -58,7 +58,7 @@ pub enum AlertCommand {
         #[arg(long)]
         full: bool,
     },
-    /// Delete an alert
+    /// Archive an alert
     Delete {
         id: String,
     },
